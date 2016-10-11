@@ -7,15 +7,15 @@ class Elevator(object):
         self.K = K                              # number of elevators
 
         self.pos = [0]*K                        # initial positions of all elevators
-        self.BU = [0]*N                         # button up on each floor   (always 0 for top floor)
-        self.BD = [0]*N                         # button down on each floor (always 0 for first floor)
-        self.BF = [[0]*N for i in range(K)]     # floor buttons pressed inside elevator, for each elevator
-        self.LU = [0]*K                         # light up indicator for each lift for current its floor (always 0 for top floor)
-        self.LD = [0]*K                         # light down indicator for each lift for current its floor (always 0 for first floor)
+        self.BU = [1]*N                         # button up on each floor   (always 0 for top floor)
+        self.BD = [1]*N                         # button down on each floor (always 0 for first floor)
+        self.BF = [[1]*N for i in range(K)]     # floor buttons pressed inside elevator, for each elevator
+        self.LU = [0]*K                         # light up indicator for each lift for its current floor (always 0 for top floor)
+        self.LD = [0]*K                         # light down indicator for each lift for its current floor (always 0 for first floor)
 
     def __str__(self):
         """
-        - Returns a string expression of the current state of the elevator
+        - returns a string expression of the current state of the elevator
         """
         state = ''
         state += ' '.join([str(x) for x in self.pos])  + ' '
@@ -42,19 +42,39 @@ class Elevator(object):
         - n : floor number
         - direction : 'U' for up button and 'D' for down button
         - status : 0 to clear and 1 to press
+        - returns if status was toggled
         """
+
+        toggled = True
+
         if direction == 'U':
+            if self.BU[n] == status:
+                toggled = False
             self.BU[n] = status
         if direction == 'D':
+            if self.BD[n] == status:
+                toggled = False
             self.BD[n] = status
+
+        return toggled
 
     def modify_elevator_button(self, k, n, status):
         """
         - k : elevator number
         - n : floor number
         - status : 0 to clear and 1 to press
+        - returns if status was toggled
         """
+        toggled = True
+        if self.BF[k][n] == status:
+            toggled = False
         self.BF[k][n] = status
+
+        return toggled
+
+    def reset_lights(self):
+        self.LU = [0] * self.K
+        self.LD = [0] * self.K
 
     def modify_lights(self, k, direction, status):
         """
