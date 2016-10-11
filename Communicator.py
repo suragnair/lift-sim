@@ -13,13 +13,12 @@ class Communicator(object):
         else:
             return True
 
-    def CreateChildProcess(self,Execution_Command,Executable_File):
+    def CreateChildProcess(self,Execution_Command,Executable_File, args_list):
         if platform == "darwin" or platform == "linux" or platform == "linux2":
-            self.ChildProcess = Popen ([Execution_Command, Executable_File], stdin = PIPE, stdout = PIPE, bufsize=0,preexec_fn=os.setsid)
+            self.ChildProcess = Popen ([Execution_Command, Executable_File] + args_list, stdin = PIPE, stdout = PIPE, bufsize=0,preexec_fn=os.setsid)
         else:
-            self.ChildProcess = Popen ([Execution_Command, Executable_File], stdin = PIPE, stdout = PIPE, bufsize=0)
+            self.ChildProcess = Popen ([Execution_Command, Executable_File] + args_list, stdin = PIPE, stdout = PIPE, bufsize=0)
         self.ModifiedOutStream = NBSR(self.ChildProcess.stdout)
-
 
     def RecvDataOnPipe(self,TIMEOUT):
         data = None
