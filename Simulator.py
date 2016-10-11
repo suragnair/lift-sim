@@ -64,7 +64,6 @@ class Simulator(object):
         self.total_cost += Simulator.WAIT_TIME_COST_FACTOR * len(self.people_in_sys)        # cost for people carried over from last time step
         self.total_cost += Simulator.UP_DOWN_COST_FACTOR * len([x for x in action if x=='AU' or x=='AD'])   # cost for all lifts moved
 
-
         new_buttons_pressed = ''
 
         # move lifts
@@ -102,14 +101,9 @@ class Simulator(object):
         if random.random() < self.p:     # person arrives
             self.total_people_served += 1
             new_person = Person(self.total_people_served, self.N, self.q, self.r)
-            if new_person.start < new_person.end:       # going up
-                unpressed = self.elev.modify_floor_button(new_person.start, 'U', 1)
-                if unpressed:
-                    new_buttons_pressed = 'BU' + str(new_person.start+1) + ' ' + new_buttons_pressed
-            else: # going down
-                unpressed = self.elev.modify_floor_button(new_person.start, 'D', 1)
-                if unpressed:
-                    new_buttons_pressed = 'BD' + str(new_person.start + 1) + ' ' + new_buttons_pressed
+            unpressed = self.elev.modify_floor_button(new_person.start, new_person.direction, 1)
+            if unpressed:
+                new_buttons_pressed = 'B' + new_person.direction + str(new_person.start+1) + ' ' + new_buttons_pressed
 
             self.people.append(new_person)
         else:
