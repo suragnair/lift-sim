@@ -7,9 +7,9 @@ class Elevator(object):
         self.K = K                              # number of elevators
 
         self.pos = [0]*K                        # initial positions of all elevators
-        self.BU = [1]*N                         # button up on each floor   (always 0 for top floor)
-        self.BD = [1]*N                         # button down on each floor (always 0 for first floor)
-        self.BF = [[1]*N for i in range(K)]     # floor buttons pressed inside elevator, for each elevator
+        self.BU = [0]*N                         # button up on each floor   (always 0 for top floor)
+        self.BD = [0]*N                         # button down on each floor (always 0 for first floor)
+        self.BF = [[0]*N for i in range(K)]     # floor buttons pressed inside elevator, for each elevator
         self.LU = [0]*K                         # light up indicator for each lift for its current floor (always 0 for top floor)
         self.LD = [0]*K                         # light down indicator for each lift for its current floor (always 0 for first floor)
 

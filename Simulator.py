@@ -163,7 +163,13 @@ class Simulator(object):
         # lifts
         for i in range(self.K):
             state += '\n'
-            state += ' '*left_margin + '-'*((lift_width+1)*self.N + 1) + '\n'
+            state += ' '*left_margin + '-'
+            for j in range(self.N):
+                if self.elev.pos[i] == j and (self.elev.LU[i] or self.elev.LD[i]):
+                    state += '-'*(lift_width/2-1) + ' '*3 + '-'*(lift_width/2)
+                else:
+                    state += '-'*(lift_width+1)
+            state += '\n'
             state += 'LIFT ' + str(i+1) + ' '*(left_margin - 5 - len(str(i+1)))
 
             for j in range(self.N):
