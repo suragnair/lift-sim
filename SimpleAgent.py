@@ -23,7 +23,7 @@ if __name__=="__main__":
     i = 0
 
     while(True):
-        actions = ['AS' + str(k+1) for k in range(args.K)]
+        actions = ['AOU' + str(k+1) for k in range(args.K)]
 
         for l in range(args.K):
             if i>(args.N/args.K+1)*l*2:
@@ -33,4 +33,4 @@ if __name__=="__main__":
         # sys.stderr.write(' '.join(actions) + '\n')
         sys.stdout.write(' '.join(actions) + '\n')
         sys.stdout.flush()
-        cur_state = sys.stdin.readline().strip()
+        updates = sys.stdin.readline().strip()
