@@ -13,7 +13,7 @@ def get_params():
     args = parser.parse_args()
     return args
 
-def basicAgent(args):
+def simpleAgent(args):
     ready = sys.stdin.readline().strip()
 
     repeat = ['AU','AOU']*(args.N-1)
@@ -42,6 +42,6 @@ if __name__=="__main__":
 
     sys.stdout.write('0\n')
     sys.stdout.flush()
-    basicAgent(args)
+    simpleAgent(args)
 
   
