@@ -129,7 +129,8 @@ def simulate(args):
 
     env = Environment(args.N, args.K, args.p, args.q, args.r, args.t)
     interactor.SendData2Process('0')
-    print(env)
+    if args.mode != 'None':
+        print(env)
     sim_log = str(env) + '\n'
 
     for episode in range(args.ep):
@@ -144,6 +145,13 @@ def simulate(args):
 
         interactor.SendData2Process(new_buttons_pressed)
 
+        sim_log += '\n' + '=' * len('EPISODE ' + str(episode + 1)) + '\n'
+        sim_log += 'EPISODE ' + str(episode + 1) + '\n'
+        sim_log += '=' * len('EPISODE ' + str(episode + 1)) + '\n'
+        sim_log += '\n' + '=> Actions taken : ' + ' '.join(actions) + '\n'
+        sim_log += str(env) + '\n'
+        sim_log += '=> Updates sent : ' + new_buttons_pressed + '\n'
+        
         if args.mode != 'None':
             print('')
             print('=' * len('EPISODE ' + str(episode + 1)))
@@ -152,12 +160,6 @@ def simulate(args):
             print('=> Actions taken : ' + ' '.join(actions))
             print(env)
             print('=> Update sent : ' + new_buttons_pressed)
-            sim_log += '\n' + '=' * len('EPISODE ' + str(episode + 1)) + '\n'
-            sim_log += 'EPISODE ' + str(episode+1) + '\n'
-            sim_log += '='*len('EPISODE ' + str(episode+1)) + '\n'
-            sim_log += '\n' + '=> Actions taken : ' + ' '.join(actions) + '\n'
-            sim_log += str(env) + '\n'
-            sim_log += '=> Updates sent : ' + new_buttons_pressed + '\n'
 
     print('FINAL TOTAL COST (at the end of ' + str(args.ep) + ' simulations) : ' + str(env.total_cost))
 

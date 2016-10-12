@@ -112,7 +112,7 @@ class Environment(object):
             new_buttons_pressed = '0 ' + new_buttons_pressed
 
         if not new_buttons_pressed:
-            new_buttons_pressed = '0 '      # TODO: need to send 0 always
+            new_buttons_pressed = '0 '
 
         return new_buttons_pressed
 
