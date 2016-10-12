@@ -101,7 +101,7 @@ class Interactor(Communicator):
         Returns:
             success_flag : A boolean flag to denote the data transfer to the process was successful or not.
         """
-        print("sending data!" ,data)
+
         if data[-1] != '\n':
             data += '\n'
         success_flag = super(Interactor, self).SendDataOnPipe(data)
@@ -130,7 +130,7 @@ def simulate(args):
     env = Environment(args.N, args.K, args.p, args.q, args.r, args.t)
     interactor.SendData2Process('0')
     print(env)
-    sim_log = str(env)
+    sim_log = str(env) + '\n'
 
     for episode in range(args.ep):
         actions = interactor.RecvDataFromProcess(args.t, first_time=False)
@@ -145,12 +145,19 @@ def simulate(args):
         interactor.SendData2Process(new_buttons_pressed)
 
         if args.mode != 'None':
-            print('Actions taken : ' + ' '.join(actions))
+            print('')
+            print('=' * len('EPISODE ' + str(episode + 1)))
+            print('EPISODE ' + str(episode+1))
+            print('='*len('EPISODE ' + str(episode+1))+'\n')
+            print('=> Actions taken : ' + ' '.join(actions))
             print(env)
-            print('Update sent : ' + new_buttons_pressed)
-            sim_log += '\n ~ \n' + 'Actions taken : ' + ' '.join(actions) + '\n'
-            sim_log += str(env)
-            sim_log += 'Updates sent : ' + new_buttons_pressed + '\n'
+            print('=> Update sent : ' + new_buttons_pressed)
+            sim_log += '\n' + '=' * len('EPISODE ' + str(episode + 1)) + '\n'
+            sim_log += 'EPISODE ' + str(episode+1) + '\n'
+            sim_log += '='*len('EPISODE ' + str(episode+1)) + '\n'
+            sim_log += '\n' + '=> Actions taken : ' + ' '.join(actions) + '\n'
+            sim_log += str(env) + '\n'
+            sim_log += '=> Updates sent : ' + new_buttons_pressed + '\n'
 
     print('FINAL TOTAL COST (at the end of ' + str(args.ep) + ' simulations) : ' + str(env.total_cost))
 
