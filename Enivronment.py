@@ -78,15 +78,16 @@ class Environment(object):
 
         # embarkation, disembarkation
         for k in range(self.K):
-            if action[k] == 'AOU' or action[k] == 'AOD':    # remove people with this dest, unpress button
-                self.people_in_sys = [x for x in self.people_in_sys if x.elev_num == k and x.dest == self.elev.pos[k]]
+            if action[k] == 'AOU' or action[k] == 'AOD':    # remove people with this dest, unpress floor and lift buttons
+                self.people_in_sys = [x for x in self.people_in_sys if not(x.elev_num == k and x.dest == self.elev.pos[k])]
                 self.elev.modify_elevator_button(k, self.elev.pos[k], 0)
+                self.elev.modify_floor_button(self.elev.pos[k], action[k][-1], 0)
 
                 # add people to the elevator who want to go in the direction of lift, press their buttons
-                for i in range(self.people_in_sys):
-                    if (self.people_in_sys[i].elev_id == -1 and self.people_in_sys[i].start == self.elev.pos[k] and
+                for i in range(len(self.people_in_sys)):
+                    if (self.people_in_sys[i].elev_num == -1 and self.people_in_sys[i].start == self.elev.pos[k] and
                             self.people_in_sys[i].direction == action[k][-1]):
-                        self.people_in_sys[i].elev_id = k
+                        self.people_in_sys[i].elev_num = k
                         unpressed = self.elev.modify_elevator_button(k, self.people_in_sys[i].dest, 1)
 
                         if unpressed:   # may have been pressed by someone already in list, or multiple times by people entering => add once
@@ -106,9 +107,12 @@ class Environment(object):
             if unpressed:
                 new_buttons_pressed = 'B' + new_person.direction + str(new_person.start+1) + ' ' + new_buttons_pressed
 
-            self.people.append(new_person)
+            self.people_in_sys.append(new_person)
         else:
             new_buttons_pressed = '0 ' + new_buttons_pressed
+
+        if not new_buttons_pressed:
+            new_buttons_pressed = '0 '      # TODO: need to send 0 always
 
         return new_buttons_pressed
 
@@ -178,7 +182,7 @@ class Environment(object):
                 else:
                     state += '-'*(lift_width+1)
             state += '\n'
-            state += 'LIFT ' + str(i+1) + ' '*(left_margin - 5 - len(str(i+1)))
+            state += 'ELEVATOR ' + str(i+1) + ' '*(left_margin - 9 - len(str(i+1)))
 
             for j in range(self.N):
                 if self.elev.pos[i] == j:
