@@ -9,7 +9,7 @@ This simulator has been created for Assignment 4 of the fall 2016 course COL333 
 
 To run the simulator:
 ```bash 
-python sim.py < run.sh > < N > < K > < p > < q > < r > < t_u >
+python sim.py run.sh N K p q r t_u
 ```
 
 run.sh should be a bash script which runs your code. It should take the arguments ```N, K, p, q, r, t_u``` as specified in the problem statement.
