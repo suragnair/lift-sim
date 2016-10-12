@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-if __name__=="__main__":
+def get_params():
     parser = argparse.ArgumentParser(description='Stationary Controller')
     parser.add_argument('N', metavar='5', type=int, help='number of floors')
     parser.add_argument('K', metavar='2', type=int, help='number of elevators')
@@ -9,10 +9,11 @@ if __name__=="__main__":
     parser.add_argument('q', metavar='0.7', type=float, help='prob person arrives at ground floor, if s/he arrives')
     parser.add_argument('r', metavar='0.9', type=float, help='prob person gets down at first floor')
     parser.add_argument('t', metavar='1', type=float, help='time unit')
-    args = parser.parse_args()
 
-    sys.stdout.write('0\n')
-    sys.stdout.flush()
+    args = parser.parse_args()
+    return args
+
+def basicAgent(args):
     ready = sys.stdin.readline().strip()
 
     repeat = ['AU','AOU']*(args.N-1)
@@ -34,3 +35,13 @@ if __name__=="__main__":
         sys.stdout.write(' '.join(actions) + '\n')
         sys.stdout.flush()
         updates = sys.stdin.readline().strip()
+
+
+if __name__=="__main__":
+    args = get_params()
+
+    sys.stdout.write('0\n')
+    sys.stdout.flush()
+    basicAgent(args)
+
+  
