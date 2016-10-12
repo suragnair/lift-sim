@@ -37,26 +37,7 @@ You may have a look at SimpleAgent.py and run.sh for an example agent and script
 EPISODE 42
 ==========
 
-=> Actions taken : AU1 AD2
--------------------------------------------------------------------------------
-FLOOR                       1     2     3     4     5     
-PEOPLE WAITING UP/DOWN     3/0   0/0   0/1   0/0   0/1   
-FLOOR UP BUTTON            -->                           
-FLOOR DOWN BUTTON                      <--         <--   
-                                                        
-                         -------------------------------
-ELEVATOR 1               |     |     |     |  .  |     |     PEOPLE IN LIFT : 4
-                         -------------------------------
-BUTTONS PRESSED                               o     o     
-                                                        
-                         --   --------------------------
-ELEVATOR 2               |  .  |     |     |     |     |     PEOPLE IN LIFT : 1
-                         -------------------------------
-BUTTONS PRESSED             o                             
-
-TOTAL CUMULATIVE COST : 831
--------------------------------------------------------------------------------
-=> Update sent : BD3 
+![alt tag](https://raw.githubusercontent.com/suragnair/lift-sim/master/sample_trace.png)
 
 - Actions taken : action taken by the controller based on the previous state  
 - People Waiting Up/Down : number of people waiting to go up and down on each floor (note that this is not explicitly available to the agent)
