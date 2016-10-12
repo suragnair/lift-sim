@@ -31,4 +31,34 @@ You may have a look at SimpleAgent.py and run.sh for an example agent and script
  - writes actions to stdout (cout) in the form of a string, with one action per elevator separated by spaces. For example, read the actions outputted by simpleAgent inside simpleAgent.py.
 
 
-Sample Print Trace:
+## Sample Print Trace:
+
+==========
+EPISODE 42
+==========
+
+=> Actions taken : AU1 AD2
+-------------------------------------------------------------------------------
+FLOOR                       1     2     3     4     5     
+PEOPLE WAITING UP/DOWN     3/0   0/0   0/1   0/0   0/1   
+FLOOR UP BUTTON            -->                           
+FLOOR DOWN BUTTON                      <--         <--   
+                                                        
+                         -------------------------------
+ELEVATOR 1               |     |     |     |  .  |     |     PEOPLE IN LIFT : 4
+                         -------------------------------
+BUTTONS PRESSED                               o     o     
+                                                        
+                         --   --------------------------
+ELEVATOR 2               |  .  |     |     |     |     |     PEOPLE IN LIFT : 1
+                         -------------------------------
+BUTTONS PRESSED             o                             
+
+TOTAL CUMULATIVE COST : 831
+-------------------------------------------------------------------------------
+=> Update sent : BD3 
+
+- Actions taken : action taken by the controller based on the previous state  
+- People Waiting Up/Down : number of people waiting to go up and down on each floor (note that this is not explicitly available to the agent)
+- Floor Up/Down Buttons : In the above Episode, the BD is pressed for floors 3 and 5, and BU is pressed for floor 1
+- Elevators : A dot shows which floor the elevator is on 
