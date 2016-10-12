@@ -3,7 +3,7 @@
 
 A simplified elevator simulator that follows the rules specified in the problem statement [here](http://www.cse.iitd.ac.in/~mausam/courses/col333/autumn2016/).
 
-This simulator has been created for Assignment 4 of the fall 2016 course COL333 (Artificial Intelligence) at IIT-Delhi. Before solving your MDP, don't forget that honesty is the best policy.
+This simulator has been created for Assignment 4 of the Fall 2016 course COL333 (Artificial Intelligence) at IIT-Delhi. Before solving your MDP, don't forget that honesty is the best policy.
 
 ## Usage Instructions
 
