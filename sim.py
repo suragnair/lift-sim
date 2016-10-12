@@ -138,6 +138,7 @@ def simulate(args):
 
         new_buttons_pressed = env.apply_action([x[:-1] for x in actions])
         if new_buttons_pressed == 'INVALID ACTION' or len(actions) != args.K:
+            print('~'*len(new_buttons_pressed) + '\n' + new_buttons_pressed + '\n' + '~'*len(new_buttons_pressed))
             return
 
         interactor.SendData2Process(new_buttons_pressed)

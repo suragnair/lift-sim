@@ -79,7 +79,7 @@ class Environment(object):
         # embarkation, disembarkation
         for k in range(self.K):
             if action[k] == 'AOU' or action[k] == 'AOD':    # remove people with this dest, unpress floor and lift buttons
-                self.people_in_sys = [x for x in self.people_in_sys if not(x.elev_num == k and x.dest == self.elev.pos[k])]
+                self.people_in_sys = [x for x in self.people_in_sys if not (x.elev_num == k and x.dest == self.elev.pos[k])]
                 self.elev.modify_elevator_button(k, self.elev.pos[k], 0)
                 self.elev.modify_floor_button(self.elev.pos[k], action[k][-1], 0)
 
