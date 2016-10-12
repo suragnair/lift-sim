@@ -209,7 +209,8 @@ class Environment(object):
             state += '\n'
 
         state += '\n'
-        state += 'TOTAL CUMULATIVE COST : ' + str(self.total_cost) + '\n'
-        state += '-' * (left_margin + (lift_width + 1) * self.N + 24) + '\n'
+        state += 'TOTAL PEOPLE IN SYSTEM : ' + str(len(self.people_in_sys)) + '\n'
+        state += 'TOTAL CUMULATIVE COST  : ' + str(self.total_cost) + '\n'
+        state += '-' * (left_margin + (lift_width + 1) * self.N + 24)
 
         return state
