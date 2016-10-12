@@ -142,7 +142,7 @@ def simulate(args):
 
         interactor.SendData2Process(new_buttons_pressed)
 
-        if args.mode != 'silent':
+        if args.mode != 'None':
             print('Actions taken : ' + ' '.join(actions))
             print(env)
             print('Update sent : ' + new_buttons_pressed)
@@ -168,7 +168,7 @@ if __name__=="__main__":
     parser.add_argument('r', metavar='0.9', type=float, help='prob person gets down at first floor')
     parser.add_argument('t', metavar='1', type=float, help='time unit')
     parser.add_argument('-ep', dest='ep', type=int, default=1000, help='number of episodes to play, default 1000')
-    parser.add_argument('-mode', dest='mode', type=str, default='Text', help='display settings')
+    parser.add_argument('-mode', dest='mode', type=str, default='CUI', help='display settings')
     parser.add_argument('-log', dest='log', type=str, default='simulation.txt', help='name for simulation log file, default simulation.txt')
     args = parser.parse_args()
 

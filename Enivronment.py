@@ -174,6 +174,14 @@ class Environment(object):
 
         # lifts
         for i in range(self.K):
+            state += ' '*(left_margin + 1)
+            for j in range(self.N):
+                if self.elev.pos[i] == j and self.elev.LU[i]:
+                    state += ' ' * (lift_width / 2 - 1) + '-->' + ' ' * (lift_width / 2)
+                elif self.elev.pos[i] == j and self.elev.LD[i]:
+                    state += ' ' * (lift_width / 2 - 1) + '<--' + ' ' * (lift_width / 2)
+                else:
+                    state += ' ' * (lift_width + 1)
             state += '\n'
             state += ' '*left_margin + '-'
             for j in range(self.N):

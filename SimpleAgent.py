@@ -24,10 +24,11 @@ if __name__=="__main__":
 
     while(True):
         actions = ['AS' + str(k+1) for k in range(args.K)]
-        actions[0] = repeat[i % len(repeat)] + '1'
 
-        if i>3:
-            actions[1] = repeat[(i-4) % len(repeat)] + '2'
+        for l in range(args.K):
+            if i>(args.N/args.K+1)*l*2:
+                actions[l] = repeat[(i - (args.N/args.K+1)*l*2 - 1) % len(repeat)] + str(l+1)
+
         i+=1
         # sys.stderr.write(' '.join(actions) + '\n')
         sys.stdout.write(' '.join(actions) + '\n')
