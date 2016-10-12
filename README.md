@@ -24,6 +24,10 @@ You should read subsequent updates from stdin and write actions to stdout. Debug
 You may have a look at SimpleAgent.py and run.sh for an example agent and script.
 
 <b>Note</b>: To create an agent in C++, write a program that:
- - reads from stdin (cin) the buttons pressed in the form of a single string. Note that the state of individual buttons is delimited by spaces. For example, if in a time step, a person shows up on the 4th floor and decides to go up, the update received would be 'BU4'. If along with this, a person enters the 2nd elevator and presses the button for the 3rd floor, the update would be 'BU4 B32'. Hence every message in the state received will be either of the form 'B<D/U><floor number>' or 'B<destination><elevator number>'.
+ - reads from stdin (cin) the buttons pressed in the form of a single string. Note that the state of individual buttons is delimited by spaces. For example, if in a time step, a person shows up on the 4th floor and decides to go up, the update received would be 'BU4'. If along with this, a person enters the 2nd elevator and presses the button for the 3rd floor, the update would be 'BU4 B32'. Hence every message in the state received will be either of the form 'B<D/U><floor number>' or 'B<destination><elevator number>'. 
+ <b>Corner Case<\b>: The state of a button will only be sent if it's not already pressed.
 
  - writes actions to stdout (cout) in the form of a string, with one action per elevator separated by spaces. For example, read the actions outputted by simpleAgent inside simpleAgent.py.
+
+
+Sample Print Trace:

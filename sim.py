@@ -101,7 +101,6 @@ class Interactor(Communicator):
         Returns:
             success_flag : A boolean flag to denote the data transfer to the process was successful or not.
         """
-        print("sending data!" ,data)
         if data[-1] != '\n':
             data += '\n'
         success_flag = super(Interactor, self).SendDataOnPipe(data)
