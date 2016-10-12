@@ -33,13 +33,11 @@ You may have a look at SimpleAgent.py and run.sh for an example agent and script
 
 ## Sample Print Trace:
 
-==========
-EPISODE 42
-==========
-
 ![alt tag](https://raw.githubusercontent.com/suragnair/lift-sim/master/sample_trace.png)
 
-- Actions taken : action taken by the controller based on the previous state  
+- Actions taken : action taken by the controller based on the previous state. Based on these actions, a simulation is performed and printed below.
 - People Waiting Up/Down : number of people waiting to go up and down on each floor (note that this is not explicitly available to the agent)
 - Floor Up/Down Buttons : In the above Episode, the BD is pressed for floors 3 and 5, and BU is pressed for floor 1
-- Elevators : A dot shows which floor the elevator is on 
+- Elevators : A dot shows which floor the elevator is on. If it is open, then a gap is shown with the direction of the light
+- Elevator Buttons : Buttons pressed inside each elevator are shown with 'o's. For Elevator 1, button for the 5th floor is pressed while the button for the 1st floor is pressed for Elevator 2.
+- Update Sent : The additional updates that transpired in the last time step. In this case, the button 'BD3' was pressed since someone arrived at floor 3.
