@@ -17,7 +17,7 @@ run.sh should be a bash script which runs your code. It should take the argument
 Optional arguments:
 -ep \<ep> : Number of episodes to play out (Default: 1000)
 -log \<log> : Name of output log file (Default: 'simulation.txt')
--mode \<mode> : 'CUI' for a command line visualisation, 'None' for no visualisation (Default: 'CUI')
+-mode \<mode> : 'CUI' for a command line visualisation, 'None' for no visualisation (Default: 'CUI')     
 
 You should read subsequent updates from stdin and write actions to stdout. Debug messages can be written to stderr. On running your executable for the first time, you should send a '0' when ready. The initial state has all elevators on the first floor with no buttons pressed.
 
