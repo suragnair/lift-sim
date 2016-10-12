@@ -15,9 +15,9 @@ python sim.py run.sh <N> <K> <p> <q> <r> <t_u>
 run.sh should be a bash script which runs your code. It should take the arguments ```N, K, p, q, r, t_u``` as specified in the problem statement.
 
 Optional arguments:  
--ep \<ep> : Number of episodes to play out (Default: 1000)  
--log \<log> : Name of output log file (Default: simulation.txt)
 -mode \<mode> : 'CUI' for a command line visualisation, 'None' for no visualisation (Default: 'CUI')
+-ep \<ep> : Number of episodes to play out (Default: 1000)
+-log \<log> : Name of output log file (Default: 'simulation.txt')
 
 You should read subsequent updates from stdin and write actions to stdout. Debug messages can be written to stderr. On running your executable for the first time, you should send a '0' when ready. The initial state has all elevators on the first floor with no buttons pressed. 
 
