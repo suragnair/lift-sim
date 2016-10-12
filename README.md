@@ -22,3 +22,5 @@ Optional arguments:
 You should read subsequent updates from stdin and write actions to stdout. Debug messages can be written to stderr. On running your executable for the first time, you should send a '0' when ready. The initial state has all elevators on the first floor with no buttons pressed.
 
 You may have a look at SimpleAgent.py and run.sh for an example agent and script.
+
+<b>Note</b>: To create an agent in C++, write a program that reads from stdin (cin) and writes to stdout (cout). 
