@@ -91,7 +91,7 @@ class Environment(object):
                         unpressed = self.elev.modify_elevator_button(k, self.people_in_sys[i].dest, 1)
 
                         if unpressed:   # may have been pressed by someone already in list, or multiple times by people entering => add once
-                            new_buttons_pressed += 'B' + str(self.people_in_sys[i].dest + 1) + str(k+1) + ' '
+                            new_buttons_pressed += 'B_' + str(self.people_in_sys[i].dest + 1) + '_' + str(k+1) + ' '
 
             # set lights
             if action[k] == 'AOU':
@@ -105,7 +105,7 @@ class Environment(object):
             new_person = Person(self.total_people_served, self.N, self.q, self.r)
             unpressed = self.elev.modify_floor_button(new_person.start, new_person.direction, 1)
             if unpressed:
-                new_buttons_pressed = 'B' + new_person.direction + str(new_person.start+1) + ' ' + new_buttons_pressed
+                new_buttons_pressed = 'B' + new_person.direction + '_' + str(new_person.start+1) + ' ' + new_buttons_pressed
 
             self.people_in_sys.append(new_person)
         else:
@@ -132,7 +132,8 @@ class Environment(object):
         state += '-'*(left_margin + (lift_width+1)*self.N + 24) + '\n'
         state += 'FLOOR' + ' '*(left_margin-5) + ' '*(lift_width/2 + 1)
         for i in range(self.N):
-            state += str(i+1) + ' '*lift_width
+            # complex rule for accounting for different string lengths for more than 100 floors
+            state += str(i+1) + ' '*(lift_width - len(str(i+1)) - (len(str(i+2))-len(str(i+1)))*((len(str(i+2))-1)/2) + 1 )
         state += '\n'
 
         # people waiting

@@ -151,7 +151,7 @@ def simulate(args):
         sim_log += '\n' + '=> Actions taken : ' + ' '.join(actions) + '\n'
         sim_log += str(env) + '\n'
         sim_log += '=> Updates sent : ' + new_buttons_pressed + '\n'
-        
+
         if args.mode != 'None':
             print('')
             print('=' * len('EPISODE ' + str(episode + 1)))
