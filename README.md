@@ -44,7 +44,7 @@ You may have a look at SimpleAgent.py and run.sh for an example agent and script
 
 ## Log to PDF
 
-To convert a .txt log to a pdf for easier viewing. To convert a log file:
+To convert a .txt log to a pdf for easier viewing:
 
 ```bash
 python convertToPDF.py <simulation.txt> <simulation.pdf>
