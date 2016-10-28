@@ -41,3 +41,17 @@ You may have a look at SimpleAgent.py and run.sh for an example agent and script
 - Elevators : A dot shows which floor the elevator is on. If it is open, then a gap is shown with the direction of the light.
 - Elevator Buttons : Buttons pressed inside each elevator are shown with 'o's. For Elevator 1, button for the 5th floor is pressed while the button for the 1st floor is pressed for Elevator 2.
 - Update sent : The additional updates that transpired in the last time step. In this case, the button 'BD3' was pressed since someone arrived at floor 3. If no one arrives (or presses an already pressed floor button), a '0' is sent, followed by new lift buttons pressed (if any).
+
+## Log to PDF
+
+To convert a .txt log to a pdf for easier viewing:
+
+```bash
+python convertToPDF.py <simulation.txt> <simulation.pdf>
+```
+
+Note: reportlab is a prerequisite and can be installed using pip:
+
+```bash
+pip install reportlab
+```
