@@ -99,6 +99,8 @@ class Environment(object):
             if action[k] == 'AOD':
                 self.elev.modify_lights(k, 'D', 1)
 
+        floor_button_pressed = False
+
         # person arrival
         if random.random() < self.p:     # person arrives
             self.total_people_served += 1
@@ -106,13 +108,12 @@ class Environment(object):
             unpressed = self.elev.modify_floor_button(new_person.start, new_person.direction, 1)
             if unpressed:
                 new_buttons_pressed = 'B' + new_person.direction + '_' + str(new_person.start+1) + ' ' + new_buttons_pressed
+                floor_button_pressed = True
 
             self.people_in_sys.append(new_person)
-        else:
-            new_buttons_pressed = '0 ' + new_buttons_pressed
 
-        if not new_buttons_pressed:
-            new_buttons_pressed = '0 '
+        if not floor_button_pressed:
+            new_buttons_pressed = '0 ' + new_buttons_pressed
 
         return new_buttons_pressed
 
