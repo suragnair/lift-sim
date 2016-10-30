@@ -87,10 +87,10 @@ class Interactor(Communicator):
             retData = 'ERROR'
 
         else:
-            if data.strip('\n') == '0':
+            if data.strip() == '0':
                 retData = '0'
             else:
-                retData = data.strip('\n').split(' ')
+                retData = data.strip().split(' ')
 
         return retData
 
