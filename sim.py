@@ -136,11 +136,13 @@ def simulate(args):
     for episode in range(args.ep):
         actions = interactor.RecvDataFromProcess(args.t, first_time=False)
         if actions == 'ERROR':
+            sim_log += 'ERROR\n'
             break
 
         new_buttons_pressed = env.apply_action([''.join([i for i in x if not i.isdigit()]) for x in actions])
         if new_buttons_pressed == 'INVALID ACTION' or len(actions) != args.K:
             print('~'*len(new_buttons_pressed) + '\n' + new_buttons_pressed + '\n' + '~'*len(new_buttons_pressed))
+            sim_log += 'INVALID ACTION\n'
             break
 
         interactor.SendData2Process(new_buttons_pressed)
@@ -161,7 +163,7 @@ def simulate(args):
             print(env)
             print('=> Update sent : ' + new_buttons_pressed)
 
-    print('FINAL TOTAL COST (at the end of ' + str(args.ep) + ' simulations) : ' + str(env.total_cost))
+    print('FINAL TOTAL COST (at the end of ' + str(episode+1) + ' simulations) : ' + str(env.total_cost))
 
     interactor.closeChildProcess()
     f = open(args.log, 'w')
