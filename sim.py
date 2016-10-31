@@ -136,6 +136,7 @@ def simulate(args):
     for episode in range(args.ep):
         actions = interactor.RecvDataFromProcess(args.t, first_time=False)
         if actions == 'ERROR':
+            interactor.closeChildProcess()
             return
 
         new_buttons_pressed = env.apply_action([''.join([i for i in x if not i.isdigit()]) for x in actions])
